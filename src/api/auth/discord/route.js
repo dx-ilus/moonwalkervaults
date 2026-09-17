@@ -10,7 +10,7 @@ export async function GET(request) {
 
   const clientId = '1542916030685511740';
   // ⚠️ Make sure this matches your exact redirect URI configured in the Discord Developer Portal
-  const redirectUri = 'https://yourdomain.com/api/auth/discord';
+  const redirectUri = 'https://moonwalkervault.dpdns.org/api/auth/discord';
   const clientSecret = process.env.DISCORD_CLIENT_SECRET; // Store your client secret securely in .env.local
   const targetGuildId = process.env.DISCORD_GUILD_ID; // Your Discord Server ID
   const requiredRoleId = '1540748020037976206'; // The Leaker Role ID
