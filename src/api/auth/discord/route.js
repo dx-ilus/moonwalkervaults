@@ -1,4 +1,3 @@
-// Example for App Router (app/api/auth/discord/route.js)
 import { NextResponse } from 'next/server';
 
 export async function GET(request) {
@@ -10,7 +9,7 @@ export async function GET(request) {
   }
 
   try {
-    // 1. Exchange code for token with Discord
+    // Exchange the authorization code for an access token
     const tokenResponse = await fetch('https://discord.com/api/oauth2/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -24,16 +23,18 @@ export async function GET(request) {
     });
 
     const tokenData = await tokenResponse.json();
-    if (!tokenData.access_token) throw new Error('Failed to get access token');
 
-    // 2. Fetch user guilds/roles or user profile to check the leaker role ID
-    // (Ensure your bot or OAuth scope includes 'guilds.members.read' or check user guilds)
-    
-    // 3. Redirect back to home dashboard with success state
+    if (!tokenData.access_token) {
+      throw new Error('Failed to retrieve access token from Discord');
+    }
+
+    // Optional: Fetch user details or guild membership roles here using tokenData.access_token
+
+    // Successful login redirect back to your home vault page
     return NextResponse.redirect(new URL('/?login=success', request.url));
 
   } catch (error) {
-    console.error('Auth error:', error);
+    console.error('OAuth Callback Error:', error);
     return NextResponse.redirect(new URL('/?error=server_error', request.url));
   }
 }
