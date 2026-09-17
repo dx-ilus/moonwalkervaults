@@ -7,7 +7,7 @@ export default function App() {
   // Replace 'YOUR_CLIENT_ID' with your actual Discord application client ID
   // and 'YOUR_ENCODED_REDIRECT_URI' with your encoded callback URL (e.g., https://yourdomain.com/api/callback)
   const DISCORD_OAUTH_URL =
-    'https://discord.com/api/oauth2/authorize?client_id=1542916030685511740&redirect_uri=https://moonwalker-vault.vercel.app/api/auth/callback/discord&response_type=code&scope=identify%20guilds';
+    'https://discord.com/api/oauth2/authorize?client_id=1542916030685511740&redirect_uri=https://moonwalkervault.dpdns.org//auth/discord/callback&response_type=code&scope=identify%20guilds';
 
   const [authStep, setAuthStep] = useState('loggedOut'); // 'loggedOut', 'authenticating', 'loggedIn'
   const [userProfile, setUserProfile] = useState(null);
